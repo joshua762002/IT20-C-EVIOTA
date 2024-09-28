@@ -1,27 +1,71 @@
-package sample;
+import java.util.Scanner;
 
-public class Main {
+public class main {
 
-	public static void main(String[] args) {
-		int[][] sampleMatrix = {
+    public static void main(String[] args) {
 
-				{1,2,3,4},
-				{5,6,7,9},
-				{9,10,10,12}
+        itemmanager list = new itemmanager();
 
-		};
+        Scanner scan = new Scanner(System.in);
 
-		for(int i=0; i < sampleMatrix.length; i++) {
-			for(int j=0; j<sampleMatrix[i].length;j++) {
-				System.out.print(sampleMatrix[i][j]+" ");
-			}
-			System.out.println();
+        while (true) {
+            System.out.println("Choose: ");
+            System.out.println("1. Insert a name ");
+            System.out.println("2. Display all name ");
+            System.out.println("3. Update name ");
+            System.out.println("4. Find names ");
+            System.out.println("5. Delete a name ");
+            System.out.println("6. Exit ");
 
-		}
+            String action = scan.nextLine();
 
+            if (action.equals("1")) {
 
+                System.out.println("What is the name that you would like to add in the list? ");
+                String items = scan.nextLine();
+                System.out.println();
+                list.insertItem(items);
+                System.out.println();
 
+            } else if (action.equals("2")) {
 
-	}
+                list.displayItems();
+                System.out.println();
 
+            } else if (action.equals("3")) {
+
+                System.out.println("What is the index of the name that you want to update?");
+                int item = Integer.parseInt(scan.nextLine());
+                System.out.println(" And what is the name replacement of the name? ");
+                String repItem = scan.nextLine();
+                list.updateItem(item, repItem);
+                System.out.println();
+
+            } else if (action.equals("4")) {
+
+                System.out.println("What is the name that you want to find? ");
+                String item = scan.nextLine();
+                list.findItem(item);
+                System.out.println();
+
+            } else if (action.equals("5")) {
+
+                System.out.println("What is the index of the name that you want to delete?");
+                list.displayItems();
+                int index = Integer.parseInt(scan.nextLine());
+                list.deleteItem(index);
+                System.out.println();
+            }
+            else if (action.equals("6")) {
+
+                System.out.println("Thank you for using my system =) ");
+                break;
+                
+            } else {
+
+                System.out.println(" hindi na pwide! ");
+
+            }
+        }
+    }
 }
